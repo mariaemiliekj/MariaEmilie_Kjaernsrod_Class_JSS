@@ -29,10 +29,8 @@ async function details() {
       console.error(`Error: ${err}`);
     }
   
-// Change the background color of the row
-row.style.backgroundColor = "#d3d3d3"; // Change this to whatever color you want
 
-// Store the viewed meme ID in local storage
+row.style.backgroundColor = "#d3d3d3"; 
 var viewedMemes = JSON.parse(localStorage.getItem("viewedMemes")) || [];
 viewedMemes.push(id);
 localStorage.setItem("viewedMemes", JSON.stringify(viewedMemes));

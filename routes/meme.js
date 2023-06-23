@@ -4,7 +4,7 @@ const axios = require('axios');
 
 router.get('/:id', function (req, res, next) {
   if (!req.user) {
-    res.redirect('/login');  // Redirect to the login page if the user is not logged in
+    res.redirect('/login');
   } else {
     axios.get(process.env.API_URL)
       .then(response => {
