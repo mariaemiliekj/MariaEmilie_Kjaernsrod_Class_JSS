@@ -3,40 +3,75 @@
 
 <head>
   <title>Portfolio</title>
-  <!-- BM Chaneg the path to the css files -->
+  <!-- BM Change the path to the css files -->
   <link rel="stylesheet" href="../../css/bootstrap.min.css" />
   <link href="../../stylesheets/navbar.css" rel="stylesheet">
+  <link href="../../stylesheets/memes.css" rel="stylesheet">
 
 </head>
 
 <body class="position-relative" data-bs-spy="scroll">
   <%- include('./partials/navbar.ejs') %>
-    <section class="container">
-      <table class="table" id="table">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Size</th>
-            <th scope="col">Image</th>
-            <th scope="col">Options</th>
-          </tr>
-        </thead>
-        <tbody>
 
-          <tr>
-            <th scope="row">
-            </th>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    <%- include('./partials/scripts.ejs') %>
+  <section class="container">
+    <div class="input-group mt-4 mb-3">
+      <input type="text" id="search-input" onkeyup="searchBar()" class="form-control" placeholder="Search">
+      <button class="btn btn-outline-info">Search</button>
+    </div>
+  
+    <table class="table" id="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Size</th>
+          <th scope="col">Image</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(function(meme){ %>
+        <tr id="<%=meme.id%>">
+          <th scope="row" class="data">
+            <%=meme.id%>
+          </th>
+          <td class="data">
+            <%=meme.name%>
+          </td>
+          <td>
+            <img src="<%=meme.url%>"" style=" width: 10%;">
+          </td>
+          <td class="data" style="display:none;">
+            <%=meme.url%>
+          </td>
+          <td class="data" style="display:none;">
+            <%=meme.width%>
+          </td>
+          <td class="data" style="display:none;">
+            <%=meme.height%>
+          </td>
+          <% if (user) { %>
+          <td>
+            <input type="button" value="Details" class="btn btn-outline-info" onclick="details()"></input>
+          </td>
+          <% } %>
+        </tr>
+        <% });%>
+      </tbody>
+    </table>
+  </section>
+
+  <%- include('./partials/scripts.ejs') %>
+  <script>
+    window.onload = function() {
+      var viewedMemes = JSON.parse(localStorage.getItem("viewedMemes")) || [];
+      viewedMemes.forEach(function(id) {
+        var row = document.getElementById(id);
+        if (row) {
+          row.style.backgroundColor = "#335051";
+        }
+      });
+    };
+    </script>
+    
 </body>
-
 </html>

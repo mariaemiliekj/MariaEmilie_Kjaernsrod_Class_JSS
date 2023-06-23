@@ -1,6 +1,8 @@
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100 fixed-top">
+<nav id="navbar" class="navbar navbar-expand-lg navbar navbar-dark bg-dark position-fixed w-100 fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Meme Central</a>
+        <a class="navbar-brand" href="/memes">
+            <img src="../../images/logo.png" width="10%">
+          </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -13,9 +15,28 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/memes">Memes</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Sign in</a>
-                </li>
+                  <% if (!user) { %>
+                    <li class="nav-item">
+                      <div class="row pe-4">
+                        <a class="btn btn-outline-info" href="/login">Login</a>
+                      </div>
+                    </li>
+                    <li class="nav-item pt-2">
+                      <p>Guest</p>
+                    </li>
+                    <% } %>
+                    <% if (user) { %>
+                    <li class="nav-item">
+                      <div class="row pe-4">
+                        <form action="/login/logout" method="post">
+                          <button class="btn btn-outline-info" type="submit">Sign out</button>
+                        </form>
+                      </div>
+                    </li>
+                    <li class="nav-item pt-2">
+                      <p>Logged in as: <%=user.username%></p>
+                    </li>
+                    <% } %>
             </ul>
         </div>
     </div>
