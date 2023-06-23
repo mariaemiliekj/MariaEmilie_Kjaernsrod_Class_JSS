@@ -6,7 +6,18 @@ This repository contains code for a hypothetical meme webpage, where you can acc
 ## Installation
 -	Download the project zip file from the git repository. 
 -	Unzip the file to an optional location on disc
--	Create website on webserver with npm install
+-	Create website on webserver with:
+```bash
+npm install
+```
+
+## Start
+Run the server with:
+```bash
+npm start
+```
+
+The app will be running on http://localhost:3000/
 
 ## Dependencies
 - "axios": "^1.4.0",
@@ -26,9 +37,4 @@ This repository contains code for a hypothetical meme webpage, where you can acc
 -    "passport-local": "^1.0.0",
 -    "request": "^2.88.2"
 
-
-## Start
-Run the server with:
-npm start
-
-The app will be running on http://localhost:3000/
+Built with: Javascript, EJS and CSS
